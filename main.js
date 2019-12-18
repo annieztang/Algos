@@ -21,6 +21,18 @@
      return document.getElementById(idName);
    }
 
+   function qs(selector) {
+      return document.querySelector(selector);
+   }
+
+   function qsa(selector) {
+      return document.querySelectorAll(selector);
+   }
+
+   function gen(elType) {
+      return document.createElement(elType);
+   }
+
    /**
     * Helper function to return the response's result text if successful, otherwise
     * returns the rejected Promise result with an error status and corresponding text
