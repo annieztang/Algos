@@ -7,7 +7,10 @@
    *  Initializes the web page
    */
    function init() {
-
+      let arr = [2, 4, 8, 3, 1, 7, 9];
+      console.log(arr);
+      selectionSort(arr);
+      console.log(arr);
    }
 
    /* ------------------------------ Helper Functions  ------------------------------ */
