@@ -14,15 +14,14 @@ function mergeSort(arr) {
       right = new int[n / 2 + 1];
    }
 
-   // index cursors
-   let i = 0;                          // index cursor for left sub-array
-   let j = 0;                          // index cursor for right sub-array
 
    // fill in left and right sub-arrays (unsorted)
-   if (n % 2 == 0) {                   // if array is empty, fill
-
-   } else {
-
+   for (let i = 0; i < n; i++) {
+      if (i < n / 2) {                 // fill left sub-array til mid-point of input array
+         left[i] = arr[i];
+      } else {                         // fill right sub-array til end of input array
+         right[i - n / 2] = arr[i];
+      }
    }
    // recursively split and sort arrays
    // return a merge left and right subarrays
