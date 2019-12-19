@@ -9,8 +9,14 @@
    function init() {
       let arr = [2, 4, 8, 3, 1, 7, 9];
       console.log(arr);
-      selectionSort(arr);
+      selectionSort(arr)
+      console.log("This is selection sort: " + arr);
+
+      arr = [2, 4, 8, 3, 1, 7, 9];
       console.log(arr);
+      bubbleSort(arr);
+      console.log("This is bubble sort: " + arr);
+
    }
 
    /* ------------------------------ Helper Functions  ------------------------------ */
