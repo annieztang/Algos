@@ -1,4 +1,4 @@
-function mergeSort(arr) {}
+function mergeSort(arr) {
    let n = arr.length                  // length of input array
    let left[];                         // left sub-array
    let right[];                        // right sub-array
@@ -20,7 +20,7 @@ function mergeSort(arr) {}
 
    // fill in left and right sub-arrays (unsorted)
    if (n % 2 == 0) {                   // if array is empty, fill
-      
+
    } else {
 
    }
