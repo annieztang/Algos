@@ -35,8 +35,8 @@ function mergeSort(arr) {
 // function for merging sorted arrays
 function merge(left, right) {
 
-   // create space for result arrays
-   let result = new int[left.length + right.length];
+   // create space for result array
+   let result = new Array();
 
    // index cursors
    let i = 0;                          // left array cursor
