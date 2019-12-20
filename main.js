@@ -1,17 +1,18 @@
 (function() {
    "use strict";
 
+   let arr = [2, 4, 8, 3, 1, 7, 9];
    window.addEventListener("load", init);
 
    /**
    *  Initializes the web page
    */
    function init() {
-      let arr = [2, 4, 8, 3, 1, 7, 9];
-      // setBarHeights(arr);
+      setBarHeights(arr);
+      id("start-sort").addEventListener("click", function() {animateSelectionSort(arr)});
       // console.log(arr);
       // animateSelectionSort(arr);
-      // selectionSort(arr)
+      // selectionSort(arr);
       // console.log("This is selection sort: " + arr);
 
       // arr = [2, 4, 8, 3, 1, 7, 9];
@@ -24,10 +25,10 @@
       // arr = mergeSort(arr);
       // console.log("This is merge sort: " + arr);
       //
-      arr = [2, 4, 8, 3, 9, 7, 1];
-      console.log(arr);
-      arr = insertionSort(arr);
-      console.log("This is insertion sort: " + arr);
+      // arr = [2, 4, 8, 3, 9, 7, 1];
+      // console.log(arr);
+      // arr = insertionSort(arr);
+      // console.log("This is insertion sort: " + arr);
 
    }
 
@@ -48,7 +49,7 @@
                min_index = j;
             }
          }
-         setTimeout(swapBars, 1000, min_index, i);
+         setTimeout(swapBars, i * 500, min_index, i);
          let min = arr[min_index];                    // placeholder for min value
          arr[min_index] = arr[i];                     // first element into index of min element
          arr[i] = min;

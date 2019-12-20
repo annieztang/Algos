@@ -24,3 +24,9 @@ footer {
    height: 10px;
    align-self: baseline;
 }
+
+button {
+   border: none;
+   border-radius: 2%;
+   padding: 1% 2% 1% 2%;
+}
