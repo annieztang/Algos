@@ -8,6 +8,7 @@
    */
    function init() {
       let arr = [2, 4, 8, 3, 1, 7, 9];
+      setBarHeights(arr);
       console.log(arr);
       selectionSort(arr)
       console.log("This is selection sort: " + arr);
@@ -16,7 +17,14 @@
       console.log(arr);
       bubbleSort(arr);
       console.log("This is bubble sort: " + arr);
+   }
 
+   function setBarHeights(arr) {
+      let bars = qsa(".bar");
+      console.log(bars);
+      for (let i = 0; i < bars.length; i++) {
+         bars[i].style.height = arr[i] * 10 + "px";
+      }
    }
 
    /* ------------------------------ Helper Functions  ------------------------------ */

@@ -1,0 +1,24 @@
+main {
+}
+
+footer {
+   text-align: center;
+   width: 99%;
+   position: absolute;
+   bottom: 0;
+}
+
+.sortingAnimation {
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   display: flex;
+   justify-content: space-around;
+}
+
+.bar {
+   background-color: purple;
+   width: 10%;
+   height: 10px;
+   align-self: baseline;
+}

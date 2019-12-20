@@ -1,7 +1,7 @@
 function mergeSort(arr) {
-   let n = arr.length                  // length of input array
-   let left[];                         // left sub-array
-   let right[];                        // right sub-array
+   let n = arr.length;                  // length of input array
+   let left = [];                         // left sub-array
+   let right = [];                        // right sub-array
 
    // create space for left and right sub-arrays
    if (n == 0) {                       // if array is empty, return empty array
