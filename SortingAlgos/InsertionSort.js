@@ -1,14 +1,14 @@
 function insertionSort(arr) {
 
    // insertion sort
-   for (let i = 0; i < arr.length; i++) {             // for loop to run through loops n times
-      for (let j = i + 1; j < arr.length; j++) {          // for loop to iterate over array
-         if (arr[j] <= arr[i]) {                       // placeholder to hold jth value
-            let plc = arr[j];
-            for (let k = j; k > i; k--) {             // for loop to pull vars in reverse
-               arr[k] = arr[k - 1];                   // the swap
-            }
-            arr[i] = plc;                             // extra swap
+   for (let i = 1; i < arr.length; i++) {             // for loop to run through loops n times
+      if(arr[i] < arr[i - 1]) {
+         let j = i;                                   // index cursor starting at i
+         while(arr[j] < arr[j - 1] && j > 0) {        // if jth element is less than previous and j
+            let placeholder = arr[j];                 // placeholder for jth value
+            arr[j] = arr[j - 1];
+            arr[j - 1] = placeholder;
+            j--;                                      // move left in the array
          }
       }
    }
