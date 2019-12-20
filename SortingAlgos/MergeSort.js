@@ -23,11 +23,51 @@ function mergeSort(arr) {
          right[i - n / 2] = arr[i];
       }
    }
+
    // recursively split and sort arrays
+   left = mergeSort(left);
+   right = mergeSort(right);
+
    // return a merge left and right subarrays
+   return merge(left, right);
 }
 
-// function for split
+// function for merging sorted arrays
+function merge(left, right) {
 
-// function for merge sorted arrays
-// create space for result arrays
+   // create space for result arrays
+   let result = new int[left.length + right.length];
+
+   // index cursors
+   let i = 0;                          // left array cursor
+   let j = 0;                          // right array cursor
+   let index = 0;                      // result array cursor
+
+   // fill result array with sub-arrays until one sub-array is depleted
+   while (i < left.length && j < right.length) {
+      if (left[i] < right[j]) {
+         result[index] = left[i];
+         i++;
+      } else {
+         result[index] = right[j];
+         j++;
+      }
+      index++;
+   }
+
+   // fill result array with rest of left sub-array if elements still unadded
+   while (i < left.length) {
+      result[index] = left[i];
+      i++;
+      index++;
+   }
+
+   // fil result array with rest of right sub-array if elemnts still unadded
+   while (j < right.length){
+      result[index] = left[j];
+      j++;
+      index++;
+   }
+
+   return result;
+}
