@@ -10,8 +10,8 @@ function mergeSort(arr) {
       left = new Array(n / 2);
       right = new Array(n / 2);
    } else {                            // if array length is odd, right array is 1 bigger than left
-      left = new Array(n / 2 - 0.5);
-      right = new Array(n / 2 - 0.5 + 1);
+      left = new Array(Math.floor(n / 2));
+      right = new Array(Math.floor(n / 2) + 1);
    }
 
 
