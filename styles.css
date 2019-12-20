@@ -13,7 +13,9 @@ footer {
    margin-right: auto;
    width: 50%;
    display: flex;
-   justify-content: space-around;
+   justify-content: space-between;
+   padding: 5%;
+   border: solid black 3px;
 }
 
 .bar {

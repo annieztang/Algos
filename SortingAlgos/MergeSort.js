@@ -1,26 +1,27 @@
 function mergeSort(arr) {
    let n = arr.length;                  // length of input array
    let left = [];                         // left sub-array
-   let right = [];                        // right sub-array
+   let right = [];                       // right sub-array
 
    // create space for left and right sub-arrays
-   if (n == 0) {                       // if array is empty, return empty array
+   if (n == 1) {                       // if array is size 1, return it (size 1 is sorted)
       return arr;
-   } else if (n % 2 == 0) {            // if array length is even, sub-arrays are half of length
-      left = new Array(n / 2);
-      right = new Array(n / 2);
-   } else {                            // if array length is odd, right array is 1 bigger than left
-      left = new Array(Math.floor(n / 2));
-      right = new Array(Math.floor(n / 2) + 1);
    }
+   // } else if (n % 2 == 0) {            // if array length is even, sub-arrays are half of length
+   //    left = new Array(n / 2);
+   //    right = new Array(n / 2);
+   // } else {                            // if array length is odd, right array is 1 bigger than left
+   //    left = new Array(Math.floor(n / 2));
+   //    right = new Array(Math.floor(n / 2) + 1);
+   // }
 
 
    // fill in left and right sub-arrays (unsorted)
    for (let i = 0; i < n; i++) {
-      if (i < n / 2) {                 // fill left sub-array til mid-point of input array
+      if (i < Math.floor(n / 2)) {                 // fill left sub-array til mid-point of input array
          left[i] = arr[i];
       } else {                         // fill right sub-array til end of input array
-         right[i - n / 2] = arr[i];
+         right[i - Math.floor(n / 2)] = arr[i];
       }
    }
 
@@ -36,7 +37,8 @@ function mergeSort(arr) {
 function merge(left, right) {
 
    // create space for result array
-   let result = new Array();
+   // let result = new Array(left.length + right.length);
+   let result = [];
 
    // index cursors
    let i = 0;                          // left array cursor
@@ -63,8 +65,8 @@ function merge(left, right) {
    }
 
    // fil result array with rest of right sub-array if elemnts still unadded
-   while (j < right.length){
-      result[index] = left[j];
+   while (j < right.length) {
+      result[index] = right[j];
       j++;
       index++;
    }

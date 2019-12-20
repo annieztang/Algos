@@ -10,28 +10,31 @@
       let arr = [2, 4, 8, 3, 1, 7, 9];
       setBarHeights(arr);
       console.log(arr);
-      selectionSort(arr)
-      console.log("This is selection sort: " + arr);
+      animateSelectionSort(arr);
+      // selectionSort(arr)
+      // console.log("This is selection sort: " + arr);
 
-      arr = [2, 4, 8, 3, 1, 7, 9];
-      bubbleSort(arr);
-      console.log("This is bubble sort: " + arr);
-      arr = [2, 4, 8, 3, 1, 7, 9];
-      mergeSort(arr);
-      console.log("This is merge sort: " + arr);
+      // arr = [2, 4, 8, 3, 1, 7, 9];
+      // console.log(arr);
+      // bubbleSort(arr);
+      // console.log("This is bubble sort: " + arr);
+      //
+      // arr = [2, 4, 8, 3, 1, 7, 9];
+      // console.log(arr);
+      // arr = mergeSort(arr);
+      // console.log("This is merge sort: " + arr);
    }
 
    function setBarHeights(arr) {
       let bars = qsa(".bar");
-      console.log(bars);
       for (let i = 0; i < bars.length; i++) {
          bars[i].style.height = arr[i] * 10 + "px";
       }
    }
 
-   function selectionSortViz(arr) {
-      let bars = qsa(".bar");
+   function animateSelectionSort(arr) {
       for (let i = 0; i < arr.length - 1; i++) {
+         console.log(arr);
          let min_index = i;
 
          for (let j = i + 1; j < arr.length; j++) {
@@ -39,12 +42,19 @@
                min_index = j;
             }
          }
-
-         let min = arr[min_index];
-         arr[min_index] = arr[i];
-         bars[min_index].style.height = arr[i] * 10 + "px";
-         arr[i] = min;
+         setTimeout(function() {swapBars(min_index, i)}, 1000);
+         let min = arr[min_index];                    // placeholder for min value
+         arr[min_index] = arr[i];                     // first element into index of min element
+         arr[i] = min;   
       }
+   }
+
+   function swapBars(min_index, front) {
+      console.log("swapped");
+      let bars = qsa(".bar");
+      let min = bars[min_index].style.height;
+      bars[min_index].style.height = bars[front].style.height;
+      bars[front].style.height = min;
    }
 
 
