@@ -7,11 +7,11 @@ function mergeSort(arr) {
    if (n == 0) {                       // if array is empty, return empty array
       return arr;
    } else if (n % 2 == 0) {            // if array length is even, sub-arrays are half of length
-      left = new int[n / 2];
-      right = new int[n / 2];
+      left = new Array(n / 2);
+      right = new Array(n / 2);
    } else {                            // if array length is odd, right array is 1 bigger than left
-      left = new int[n / 2];
-      right = new int[n / 2 + 1];
+      left = new Array(n / 2 - 0.5);
+      right = new Array(n / 2 - 0.5 + 1);
    }
 
 
