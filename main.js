@@ -14,9 +14,11 @@
       console.log("This is selection sort: " + arr);
 
       arr = [2, 4, 8, 3, 1, 7, 9];
-      console.log(arr);
       bubbleSort(arr);
       console.log("This is bubble sort: " + arr);
+      arr = [2, 4, 8, 3, 1, 7, 9];
+      mergeSort(arr);
+      console.log("This is merge sort: " + arr);
    }
 
    function setBarHeights(arr) {
