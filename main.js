@@ -27,6 +27,25 @@
       }
    }
 
+   function selectionSortViz(arr) {
+      let bars = qsa(".bar");
+      for (let i = 0; i < arr.length - 1; i++) {
+         let min_index = i;
+
+         for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[min_index]) {
+               min_index = j;
+            }
+         }
+
+         let min = arr[min_index];
+         arr[min_index] = arr[i];
+         bars[min_index].style.height = arr[i] * 10 + "px";
+         arr[i] = min;
+      }
+   }
+
+
    /* ------------------------------ Helper Functions  ------------------------------ */
 
    /**
