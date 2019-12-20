@@ -8,6 +8,8 @@
    *  Initializes the web page
    */
    function init() {
+      // let sortAlgo = new Sort(arr);
+      // sortAlgo = id("sortingAlgos").addEventListener("click").
       setBarHeights(arr);
       id("start-sort").addEventListener("click", function() {animateSelectionSort(arr)});
       // console.log(arr);
