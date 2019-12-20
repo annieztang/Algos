@@ -1,8 +1,8 @@
 (function() {
-   "use strict";
+   "use strict";                                      // prevents use of undeclared variables
 
    let arr = [2, 4, 8, 3, 1, 7, 9];
-   window.addEventListener("load", init);
+   window.addEventListener("load", init);             // after window loads, run init
 
    /**
    *  Initializes the web page
@@ -32,6 +32,7 @@
 
    }
 
+   // sets heights of bars
    function setBarHeights(arr) {
       let bars = qsa(".bar");
       for (let i = 0; i < bars.length; i++) {
@@ -39,6 +40,7 @@
       }
    }
 
+   // animates sorting algorithm
    function animateSelectionSort(arr) {
       for (let i = 0; i < arr.length - 1; i++) {
          console.log(arr);
@@ -50,12 +52,13 @@
             }
          }
          setTimeout(swapBars, i * 500, min_index, i);
-         let min = arr[min_index];                    // placeholder for min value
-         arr[min_index] = arr[i];                     // first element into index of min element
+         let min = arr[min_index];
+         arr[min_index] = arr[i];
          arr[i] = min;
       }
    }
 
+   // visually swaps bars
    function swapBars(min_index, front) {
       console.log("swapped");
       let bars = qsa(".bar");
@@ -76,13 +79,18 @@
      return document.getElementById(idName);
    }
 
+   // creates object of the first id, class, or element
+   //    returns: object of first id, class, or element
    function qs(selector) {
       return document.querySelector(selector);
    }
 
+   // creates array of objects by like id, class, or elements
+   //    returns: array of like id, class, or elements
    function qsa(selector) {
       return document.querySelectorAll(selector);
    }
+
 
    function gen(elType) {
       return document.createElement(elType);
