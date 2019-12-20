@@ -42,10 +42,10 @@
                min_index = j;
             }
          }
-         setTimeout(function() {swapBars(min_index, i)}, 1000);
+         setTimeout(swapBars, 1000, min_index, i);
          let min = arr[min_index];                    // placeholder for min value
          arr[min_index] = arr[i];                     // first element into index of min element
-         arr[i] = min;   
+         arr[i] = min;
       }
    }
 
