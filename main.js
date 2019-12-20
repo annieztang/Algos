@@ -24,7 +24,7 @@
       // arr = mergeSort(arr);
       // console.log("This is merge sort: " + arr);
       //
-      arr = [2, 4, 8, 3, 1, 7, 9];
+      arr = [2, 4, 8, 3, 9, 7, 1];
       console.log(arr);
       arr = insertionSort(arr);
       console.log("This is insertion sort: " + arr);
