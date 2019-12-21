@@ -79,12 +79,12 @@
    }
 
    // visually swaps bars
-   function swapBars(min_index, front) {
+   function swapBars(a_index, b_index) {
       console.log("swapped");
       let bars = qsa(".bar");
-      let min = bars[min_index].style.height;
-      bars[min_index].style.height = bars[front].style.height;
-      bars[front].style.height = min;
+      let min = bars[a_index].style.height;
+      bars[a_index].style.height = bars[b_index].style.height;
+      bars[b_index].style.height = min;
    }
 
 
