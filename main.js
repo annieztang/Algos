@@ -65,19 +65,27 @@
          do {
             isSorted = true;
             for (let i = 0; i < arr.length - 1; i++) {
+               colorBars(green, i, i + 1);
                if (arr[i] > arr[i+1]) {
-                  setTimeout(swapBars, j * 500, i, i+1);
+                  colorBars(red, i, i + 1);
+                  setTimeout(swapBars, j * 500, i, i + 1);
                   j++;
                   let placeholder = arr[i];
                   arr[i] = arr[i+1];
                   arr[i+1] = placeholder;
                   isSorted = false;
+                  colorBars(green, i, i + 1);
                }
             }
          } while (!isSorted);
       }
    }
 
+   function colorBars(color, a_index, b_index) {
+      let bars = qsa(".bar");
+      bars[b_index].style.color = color;
+      bars[a_index].style.color = color;
+   }
    // visually swaps bars
    function swapBars(a_index, b_index) {
       console.log("swapped");
