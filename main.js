@@ -24,6 +24,7 @@
       }
    }
 
+   // Selects the animation for the bars
    function chooseSort() {
       currentSort = id("sortingOptions").value;
       if (currentSort == "selection") {
@@ -33,6 +34,7 @@
       }
    }
 
+   // resets bar positions
    function resetSort() {
       arr = [2, 4, 8, 3, 1, 7, 9];
       setBarHeights(arr);
