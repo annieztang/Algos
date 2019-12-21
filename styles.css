@@ -14,7 +14,7 @@ footer {
    width: 50%;
    display: flex;
    justify-content: space-between;
-   padding: 5%;
+   padding: 5% 5% 2% 5%;
    border: solid black 3px;
 }
 
@@ -25,11 +25,27 @@ footer {
    align-self: baseline;
 }
 
+#button-container {
+   margin-top: 2%;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   display: flex;
+   justify-content: space-around;
+}
+
 button {
    border: none;
-   border-radius: 2%;
+   border-radius: 10%;
    padding: 1% 2% 1% 2%;
+   height: 2.5em;
+   font-size: 1em;
+   cursor: pointer;
 }
+
+/* button:hover {
+
+} */
 
 #sortingOptions {
    padding: 0.5%;
