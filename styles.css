@@ -8,7 +8,7 @@ footer {
    bottom: 0;
 }
 
-.sortingAnimation {
+#sortingAnimation {
    margin-left: auto;
    margin-right: auto;
    width: 50%;
@@ -29,4 +29,8 @@ button {
    border: none;
    border-radius: 2%;
    padding: 1% 2% 1% 2%;
+}
+
+#sortingOptions {
+   padding: 0.5%;
 }

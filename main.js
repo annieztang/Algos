@@ -2,6 +2,7 @@
    "use strict";                                      // prevents use of undeclared variables
 
    let arr = [2, 4, 8, 3, 1, 7, 9];
+   let currentSort = "selection";
    window.addEventListener("load", init);             // after window loads, run init
 
    /**
@@ -11,27 +12,8 @@
       // let sortAlgo = new Sort(arr);
       // sortAlgo = id("sortingAlgos").addEventListener("click").
       setBarHeights(arr);
-      id("start-sort").addEventListener("click", function() {animateSelectionSort(arr)});
-      // console.log(arr);
-      // animateSelectionSort(arr);
-      // selectionSort(arr);
-      // console.log("This is selection sort: " + arr);
-
-      // arr = [2, 4, 8, 3, 1, 7, 9];
-      // console.log(arr);
-      // bubbleSort(arr);
-      // console.log("This is bubble sort: " + arr);
-      //
-      // arr = [2, 4, 8, 3, 1, 7, 9];
-      // console.log(arr);
-      // arr = mergeSort(arr);
-      // console.log("This is merge sort: " + arr);
-      //
-      // arr = [2, 4, 8, 3, 9, 7, 1];
-      // console.log(arr);
-      // arr = insertionSort(arr);
-      // console.log("This is insertion sort: " + arr);
-
+      id("start-sort").addEventListener("click", chooseSort);
+      id("reset").addEventListener("click", resetSort);
    }
 
    // sets heights of bars
@@ -40,6 +22,20 @@
       for (let i = 0; i < bars.length; i++) {
          bars[i].style.height = arr[i] * 10 + "px";
       }
+   }
+
+   function chooseSort() {
+      currentSort = id("sortingOptions").value;
+      if (currentSort == "selection") {
+         animateSelectionSort(arr);
+      } else {
+         animateBubbleSort(arr);
+      }
+   }
+
+   function resetSort() {
+      arr = [2, 4, 8, 3, 1, 7, 9];
+      setBarHeights(arr);
    }
 
    // animates sorting algorithm
@@ -57,6 +53,26 @@
          let min = arr[min_index];
          arr[min_index] = arr[i];
          arr[i] = min;
+      }
+   }
+
+   function animateBubbleSort(arr) {
+      if (arr.length > 1) {
+         let isSorted;
+         let j = 0;       // counter for visual swaps (used to keep timing constant)
+         do {
+            isSorted = true;
+            for (let i = 0; i < arr.length - 1; i++) {
+               if (arr[i] > arr[i+1]) {
+                  setTimeout(swapBars, j * 500, i, i+1);
+                  j++;
+                  let placeholder = arr[i];
+                  arr[i] = arr[i+1];
+                  arr[i+1] = placeholder;
+                  isSorted = false;
+               }
+            }
+         } while (!isSorted);
       }
    }
 
