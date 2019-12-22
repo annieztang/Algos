@@ -51,46 +51,26 @@
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
          let min_index = i;
-         // setTimeout(function() {
-         //    bars[i].classList.add("sorted"); // first element green
-         // }, k * interval);
-         colorBars("green", i, k)
+         colorBars("green", i, k); // first element in sub-array green.
 
          for (let j = i + 1; j < arr.length; j++) {
-            // setTimeout(function() {
-            //    bars[j].classList.add("iterator");
-            // }, k * interval);
             colorBars("orchid", j, k)
-            k += 0.5;
+            k += 0.5; // shows iterator for 0.5, then turn red
 
             if (arr[j] < arr[min_index]) { // if min val found, turn BOTH first and min bar RED
-               colorBars("purple", min_index, k);
+               colorBars("purple", min_index, k); // turn old min_index back to purple
                colorBars("red", j, k);
                colorBars("red", i, k);
-
-               // setTimeout(function() {                  // shows iterator for 0.5, then turn red
-               //    bars[min_index].classList.remove("not-sorted");
-               //    bars[j].classList.remove("iterator"); // remove highlight from j/min val
-               //    bars[j].classList.add("not-sorted"); // turn j/min val RED
-               //    bars[i].classList.remove("sorted"); // (Remove green) from 1st element
-               //    bars[i].classList.add("not-sorted"); // add red to 1st element
-               //    min_index = j;
-               // }, k * interval);
                min_index = j;
             }
 
-            // red (or nothing) add .5 seconds
             if (min_index == j) {              // NEW CHANGES by Annie 11:38AM 12/22/19 lol
                colorBars("red", min_index, k);
             }
             k += 0.5;
-            if (min_index != j) {
+            if (min_index != j) { // if iterator is not min val, turn bar back to purple
                colorBars("purple", j, k);
             }
-
-            // setTimeout(function() {
-            //    bars[j].classList.remove("iterator"); // remove iterator color (in case)
-            // }, k * interval);
          }
 
          setTimeout(swapBars, k * interval, min_index, i);
@@ -99,22 +79,12 @@
          arr[i] = min;
 
          // mark 1st element as sorted, remove all classes from rest
-         colorBars("green", i, k);
-         colorBars("green", min_index, k);
-         // setTimeout(function() {
-         //    bars[i].classList.remove("not-sorted");
-         //    bars[i].classList.add("sorted");
-         //    bars[min_index].classList.remove("not-sorted");
-         //    bars[min_index].classList.add("sorted");
-         // }, k * interval);
-
+         colorBars("green", i, k); // first element marked as sorted
+         colorBars("green", min_index, k); // min_index temporarily marked as sorted.
          k += 1;
 
          // holds green after swap, then changes second bar to purple
-         colorBars("purple", min_index, k);
-         // setTimeout(function() {
-         //    bars[min_index].classList.remove("sorted");
-         // }, k * interval);
+         colorBars("purple", min_index, k); // turns the post-swap, min_index back to purple
       }
    }
 
