@@ -1,6 +1,5 @@
 (function() {
    "use strict";                                      // prevents use of undeclared variables
-
    let arr = [2, 4, 8, 3, 1, 7, 9];
    let currentSort = "selection";
    const interval = 500;
@@ -86,6 +85,8 @@
          // holds green after swap, then changes second bar to purple
          colorBars("purple", min_index, k); // turns the post-swap, min_index back to purple
       }
+      colorBars("green", arr.length - 2, k);
+      colorBars("green", arr.length - 1, k);
    }
 
    // function colorBar(bar_index, color) {
