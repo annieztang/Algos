@@ -25,6 +25,14 @@ footer {
    align-self: baseline;
 }
 
+.sorted {
+   background-color: green;
+}
+
+.not-sorted {
+   background-color: red;
+}
+
 #button-container {
    margin-top: 2%;
    margin-left: auto;

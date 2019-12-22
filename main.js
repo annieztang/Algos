@@ -42,21 +42,47 @@
 
    // animates sorting algorithm
    function animateSelectionSort(arr) {
+      let bars = qsa(".bar");
+      let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
-         console.log(arr);
          let min_index = i;
+            bars[i].classList.add("sorted"); // first element green
 
          for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[min_index]) {
+            bars[j].classList.add("sorted"); // iterator green
+            // green for .3 seconds
+            if (arr[j] < arr[min_index]) { // if min val found, turn BOTH first and min bar RED
                min_index = j;
+               bars[j].classList.remove("sorted"); // remove green from j/min val
+               bars[j].classList.add("not-sorted"); // turn j/min val RED
+               bars[i].classList.remove("sorted"); // (Remove green) from 1st element
+               bars[i].classList.add("not-sorted"); // add red to 1st element
             }
+            // red (or nothing) add .3 seconds
+            bars[j].classList.remove("sorted"); // remove iterator color
          }
-         setTimeout(swapBars, i * 500, min_index, i);
+
+         setTimeout(swapBars, i * 900, min_index, i);
          let min = arr[min_index];
          arr[min_index] = arr[i];
          arr[i] = min;
+
+         // mark 1st element as sorted, remove all classes from rest
+         bars[i].classList.remove("not-sorted");
+         bars[i].classList.add("sorted");
+         bars[min_index].classList.remove("not-sorted");
+         bars[min_index].classList.add("sorted");
+
+         // show for .3 seconds
+
+
+         bars[min_index].classList.remove("sorted");
       }
    }
+
+   // function colorBar(bar_index, color) {
+   //    bars[bar_index].style.backgroundColor = color;
+   // }
 
    function animateBubbleSort(arr) {
       if (arr.length > 1) {
@@ -65,16 +91,13 @@
          do {
             isSorted = true;
             for (let i = 0; i < arr.length - 1; i++) {
-               colorBars(green, i, i + 1);
                if (arr[i] > arr[i+1]) {
-                  colorBars(red, i, i + 1);
                   setTimeout(swapBars, j * 500, i, i + 1);
                   j++;
                   let placeholder = arr[i];
                   arr[i] = arr[i+1];
                   arr[i+1] = placeholder;
                   isSorted = false;
-                  colorBars(green, i, i + 1);
                }
             }
          } while (!isSorted);
@@ -83,9 +106,10 @@
 
    function colorBars(color, a_index, b_index) {
       let bars = qsa(".bar");
-      bars[b_index].style.color = color;
-      bars[a_index].style.color = color;
+      bars[b_index].style.backgroundColor = color;
+      bars[a_index].style.backgroundColor = color;
    }
+
    // visually swaps bars
    function swapBars(a_index, b_index) {
       console.log("swapped");
