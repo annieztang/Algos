@@ -82,7 +82,12 @@
             // red (or nothing) add .5 seconds
 
             k += 0.5;
-            colorBars("purple", j, k);
+            if (min_index == j) {              // NEW CHANGES by Annie 11:38AM 12/22/19 lol
+               colorBars("red", min_index, k);
+            } else {
+               colorBars("purple", j, k);
+            }
+
             // setTimeout(function() {
             //    bars[j].classList.remove("iterator"); // remove iterator color (in case)
             // }, k * interval);
