@@ -3,6 +3,7 @@
 
    let arr = [2, 4, 8, 3, 1, 7, 9];
    let currentSort = "selection";
+   const interval = 500;
    window.addEventListener("load", init);             // after window loads, run init
 
    /**
@@ -36,8 +37,12 @@
 
    // resets bar positions
    function resetSort() {
+      let bars = qsa(".bar");
       arr = [2, 4, 8, 3, 1, 7, 9];
       setBarHeights(arr);
+      for (let i = 0; i < bars.length; i++) {
+         bars[i].classList.remove("sorted");
+      }
    }
 
    // animates sorting algorithm
@@ -46,37 +51,55 @@
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
          let min_index = i;
+         setTimeout(function() {
             bars[i].classList.add("sorted"); // first element green
+         }, k * interval);
 
          for (let j = i + 1; j < arr.length; j++) {
-            bars[j].classList.add("sorted"); // iterator green
-            // green for .3 seconds
+            setTimeout(function() {
+               bars[j].classList.add("iterator");
+            }, k * interval);
+            k += 0.5;
+
             if (arr[j] < arr[min_index]) { // if min val found, turn BOTH first and min bar RED
+               setTimeout(function() {                  // shows iterator for 0.5, then turn red
+                  bars[min_index].classList.remove("not-sorted");
+                  bars[j].classList.remove("iterator"); // remove highlight from j/min val
+                  bars[j].classList.add("not-sorted"); // turn j/min val RED
+                  bars[i].classList.remove("sorted"); // (Remove green) from 1st element
+                  bars[i].classList.add("not-sorted"); // add red to 1st element
+                  min_index = j;
+               }, k * interval);
                min_index = j;
-               bars[j].classList.remove("sorted"); // remove green from j/min val
-               bars[j].classList.add("not-sorted"); // turn j/min val RED
-               bars[i].classList.remove("sorted"); // (Remove green) from 1st element
-               bars[i].classList.add("not-sorted"); // add red to 1st element
             }
-            // red (or nothing) add .3 seconds
-            bars[j].classList.remove("sorted"); // remove iterator color
+
+            // red (or nothing) add .5 seconds
+
+            k += 0.5;
+            setTimeout(function() {
+               bars[j].classList.remove("iterator"); // remove iterator color (in case)
+            }, k * interval);
          }
 
-         setTimeout(swapBars, i * 900, min_index, i);
+         setTimeout(swapBars, k * interval, min_index, i);
          let min = arr[min_index];
          arr[min_index] = arr[i];
          arr[i] = min;
 
          // mark 1st element as sorted, remove all classes from rest
-         bars[i].classList.remove("not-sorted");
-         bars[i].classList.add("sorted");
-         bars[min_index].classList.remove("not-sorted");
-         bars[min_index].classList.add("sorted");
+         setTimeout(function() {
+            bars[i].classList.remove("not-sorted");
+            bars[i].classList.add("sorted");
+            bars[min_index].classList.remove("not-sorted");
+            bars[min_index].classList.add("sorted");
+         }, k * interval);
 
-         // show for .3 seconds
+         k += 1;
 
-
-         bars[min_index].classList.remove("sorted");
+         // holds green after swap, then changes second bar to purple
+         setTimeout(function() {
+            bars[min_index].classList.remove("sorted");
+         }, k * interval);
       }
    }
 
@@ -92,7 +115,7 @@
             isSorted = true;
             for (let i = 0; i < arr.length - 1; i++) {
                if (arr[i] > arr[i+1]) {
-                  setTimeout(swapBars, j * 500, i, i + 1);
+                  setTimeout(swapBars, j * interval, i, i + 1);
                   j++;
                   let placeholder = arr[i];
                   arr[i] = arr[i+1];

@@ -15,7 +15,7 @@ footer {
    display: flex;
    justify-content: space-between;
    padding: 5% 5% 2% 5%;
-   border: solid black 3px;
+   /* border: solid black 3px; */
 }
 
 .bar {
@@ -23,6 +23,10 @@ footer {
    width: 10%;
    height: 10px;
    align-self: baseline;
+}
+
+.iterator {
+   background-color: orchid;
 }
 
 .sorted {
