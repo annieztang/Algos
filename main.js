@@ -87,7 +87,6 @@
             colorBars("purple", min_index, k); // turns the post-swap, min_index back to purple
          }
       }
-      // colorBars("green", arr.length - 2, k);
       colorBars("green", arr.length - 1, k);
    }
 
