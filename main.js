@@ -97,20 +97,33 @@
    function animateBubbleSort(arr) {
       if (arr.length > 1) {
          let isSorted;
-         let j = 0;       // counter for visual swaps (used to keep timing constant)
+         let j = arr.length - 1;    // counter for green at end
+         let k = 1;        // counter for color
          do {
             isSorted = true;
-            for (let i = 0; i < arr.length - 1; i++) {
-               if (arr[i] > arr[i+1]) {
-                  setTimeout(swapBars, j * interval, i, i + 1);
-                  j++;
+            for (let i = 0; i < j; i++) {
+               colorBars("red", i, k);
+               colorBars("red", i + 1, k);
+               k += 0.5;
+               if (arr[i] > arr[i + 1]) {
+                  setTimeout(swapBars, k * interval, i, i + 1);
+                  colorBars("green", i, k);
+                  colorBars("green", i + 1, k);
                   let placeholder = arr[i];
                   arr[i] = arr[i+1];
                   arr[i+1] = placeholder;
                   isSorted = false;
                }
+               k += 0.5;
+               colorBars("purple", i, k);
             }
+            colorBars("green", j, k);
+            j--;
          } while (!isSorted);
+
+         for (let i = 0; i < arr.length - 1; i++) {
+            colorBars("green", i, k);
+         }
       }
    }
 
