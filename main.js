@@ -80,11 +80,11 @@
             }
 
             // red (or nothing) add .5 seconds
-
-            k += 0.5;
             if (min_index == j) {              // NEW CHANGES by Annie 11:38AM 12/22/19 lol
                colorBars("red", min_index, k);
-            } else {
+            }
+            k += 0.5;
+            if (min_index != j) {
                colorBars("purple", j, k);
             }
 
