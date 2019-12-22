@@ -50,7 +50,7 @@
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
          let min_index = i;
-         colorBars("green", i, k); // first element in sub-array green.
+         colorBars("red", i, k); // first element in sub-array green.
 
          for (let j = i + 1; j < arr.length; j++) {
             colorBars("orchid", j, k)
@@ -59,7 +59,7 @@
             if (arr[j] < arr[min_index]) { // if min val found, turn BOTH first and min bar RED
                colorBars("purple", min_index, k); // turn old min_index back to purple
                colorBars("red", j, k);
-               colorBars("red", i, k);
+               // colorBars("red", i, k);
                min_index = j;
             }
 
@@ -83,9 +83,11 @@
          k += 1;
 
          // holds green after swap, then changes second bar to purple
-         colorBars("purple", min_index, k); // turns the post-swap, min_index back to purple
+         if (min_index != i) {
+            colorBars("purple", min_index, k); // turns the post-swap, min_index back to purple
+         }
       }
-      colorBars("green", arr.length - 2, k);
+      // colorBars("green", arr.length - 2, k);
       colorBars("green", arr.length - 1, k);
    }
 
