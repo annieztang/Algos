@@ -127,10 +127,11 @@
       }
    }
 
-   function colorBars(color, a_index, b_index) {
+   function colorBars(color, index, k) {
       let bars = qsa(".bar");
-      bars[b_index].style.backgroundColor = color;
-      bars[a_index].style.backgroundColor = color;
+      setTimeout(function() {
+         bars[index].style.backgroundColor = color;
+      }, k * interval);
    }
 
    // visually swaps bars
