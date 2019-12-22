@@ -35,13 +35,13 @@
       }
    }
 
-   // resets bar positions
+   // resets bar positions and clo
    function resetSort() {
       let bars = qsa(".bar");
       arr = [2, 4, 8, 3, 1, 7, 9];
       setBarHeights(arr);
       for (let i = 0; i < bars.length; i++) {
-         bars[i].classList.remove("sorted");
+         bars[i].style.backgroundColor = "purple";
       }
    }
 
