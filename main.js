@@ -2,7 +2,7 @@
    "use strict";                                      // prevents use of undeclared variables
    let arr = [];
    let currentSort = "selection";
-   const interval = 500;
+   const interval = 10;
    const maxArraySize = 25;
    const maxArrayValue = 20;
    window.addEventListener("load", init);             // after window loads, run init
