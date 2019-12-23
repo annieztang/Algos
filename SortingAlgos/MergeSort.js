@@ -7,13 +7,7 @@ function mergeSort(arr) {
    if (n == 1) {                       // if array is size 1, return it (size 1 is sorted)
       return arr;
    }
-   // } else if (n % 2 == 0) {            // if array length is even, sub-arrays are half of length
-   //    left = new Array(n / 2);
-   //    right = new Array(n / 2);
-   // } else {                            // if array length is odd, right array is 1 bigger than left
-   //    left = new Array(Math.floor(n / 2));
-   //    right = new Array(Math.floor(n / 2) + 1);
-   // }
+
 
 
    // fill in left and right sub-arrays (unsorted)
@@ -37,7 +31,6 @@ function mergeSort(arr) {
 function merge(left, right) {
 
    // create space for result array
-   // let result = new Array(left.length + right.length);
    let result = [];
 
    // index cursors

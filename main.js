@@ -137,6 +137,7 @@
          }
       }
    }
+   
 
    function colorBars(color, index, k) {
       let bars = qsa(".bar");
