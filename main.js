@@ -1,9 +1,10 @@
 (function() {
    "use strict";                                      // prevents use of undeclared variables
-   let arr = [2, 4, 8, 3, 1, 7, 9];
+   let arr = [];
    let currentSort = "selection";
    const interval = 500;
    const maxArraySize = 25;
+   const maxArrayValue = 20;
    window.addEventListener("load", init);             // after window loads, run init
 
    /**
@@ -12,9 +13,11 @@
    function init() {
       // let sortAlgo = new Sort(arr);
       // sortAlgo = id("sortingAlgos").addEventListener("click").
-      setBarHeights(arr);
+      makeNewBars();
+      // setBarHeights(arr);
       id("start-sort").addEventListener("click", chooseSort);
       id("reset").addEventListener("click", resetSort);
+      id("new-bars").addEventListener("click", makeNewBars);
       id("slider").oninput = function() {
          id("slider-value").innerText = this.value;
       }
@@ -148,8 +151,20 @@
       bars[b_index].style.height = min;
    }
 
-   function makeRandArray() {
-      
+   // randomize bars and array values
+   function makeNewBars() {
+      arr = [];                                // clears current array values
+      id("sortingAnimation").innerHTML = "";   // clears current bars
+      let sliderVal = id("slider").value;
+      for (let i = 0; i < sliderVal; i++) {             // loop up to value on slider
+         arr[i] = Math.floor(Math.random() * maxArrayValue + 1); // randomize array value
+         let bar = gen("div");
+         bar.classList.add("bar");
+         bar.style.height = arr[i] * 10 + "px";                  // make new bar with height according to array value
+         bar.style.width = 60 / sliderVal + "%";
+         id("sortingAnimation").appendChild(bar);                // append to animation container
+      }
+      console.log(arr);
    }
 
 
