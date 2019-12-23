@@ -1,20 +1,17 @@
 (function() {
    "use strict";                                      // prevents use of undeclared variables
    let arr = [];
+   let arr2 = [];
    let currentSort = "selection";
    const interval = 10;
    const maxArraySize = 25;
    const maxArrayValue = 20;
    window.addEventListener("load", init);             // after window loads, run init
 
-   /**
-   *  Initializes the web page
-   */
    function init() {
       // let sortAlgo = new Sort(arr);
       // sortAlgo = id("sortingAlgos").addEventListener("click").
       makeNewBars();
-      // setBarHeights(arr);
       id("start-sort").addEventListener("click", chooseSort);
       id("reset").addEventListener("click", resetSort);
       id("new-bars").addEventListener("click", makeNewBars);
@@ -25,7 +22,7 @@
 
    // sets heights of bars
    function setBarHeights(arr) {
-      let bars = qsa(".bar");
+   let bars = qsa(".bar");
       for (let i = 0; i < bars.length; i++) {
          bars[i].style.height = arr[i] * 10 + "px";
       }
@@ -41,19 +38,22 @@
       }
    }
 
-   // resets bar positions and clo
+   // resets bar positions and color
    function resetSort() {
       let bars = qsa(".bar");
-      arr = [2, 4, 8, 3, 1, 7, 9];
+      arr = arr2.slice();
       setBarHeights(arr);
       for (let i = 0; i < bars.length; i++) {
          bars[i].style.backgroundColor = "purple";
       }
+      console.log(arr);
+      console.log(arr2);
    }
 
    // animates sorting algorithm
    function animateSelectionSort(arr) {
       let bars = qsa(".bar");
+      console.log("animation running");
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
          let min_index = i;
@@ -96,6 +96,8 @@
          }
       }
       colorBars("green", arr.length - 1, k);
+      console.log(arr);
+      console.log(arr2);
    }
 
    // function colorBar(bar_index, color) {
@@ -144,8 +146,8 @@
 
    // visually swaps bars
    function swapBars(a_index, b_index) {
-      console.log("swapped");
       let bars = qsa(".bar");
+      console.log("swapped");
       let min = bars[a_index].style.height;
       bars[a_index].style.height = bars[b_index].style.height;
       bars[b_index].style.height = min;
@@ -164,7 +166,9 @@
          bar.style.width = 60 / sliderVal + "%";
          id("sortingAnimation").appendChild(bar);                // append to animation container
       }
+      arr2 = arr.slice();
       console.log(arr);
+      console.log(arr2);
    }
 
 

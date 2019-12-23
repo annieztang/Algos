@@ -1,28 +1,33 @@
-main {
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body {
+   font-family: "Open Sans", sans-serif;
 }
 
 footer {
    text-align: center;
+   font-size: 1vw;
    width: 99%;
+   height: 3em;
    position: absolute;
    bottom: 0;
+   background-color: rgba(211, 211, 211, 0.5);
 }
 
 #sortingAnimation {
    margin-left: auto;
    margin-right: auto;
+   margin-bottom: 2%;
    width: 50%;
    display: flex;
    justify-content: space-between;
-   padding: 5% 5% 2% 5%;
-   /* border: solid black 3px; */
+   height: 50vh;
 }
 
 .bar {
    background-color: purple;
    width: 5%;
-   height: 10px;
-   align-self: baseline;
+   align-self: flex-end;
 }
 
 .iterator {
@@ -43,10 +48,36 @@ footer {
    margin-left: auto;
    display: flex;
    justify-content: space-around;
+   align-items: center;
+   height: 5vh;
 }
 
 #slider {
    width: 80%;
+   -webkit-appearance: none;
+   height: 1vh;
+   background: #d3d3d3;
+   opacity: 0.7;
+   transition: opacity .2s;
+}
+
+#slider:hover {
+   opacity: 1;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.3vw;
+  height: 1.3vw;
+  border-radius: 50%;
+  background: purple;
+  cursor: pointer;
+}
+/* use -moz- instead of -webkit- if we want compatible with firefox */
+
+#slider-value {
+   margin: 0;
 }
 
 #button-container {
@@ -59,17 +90,20 @@ footer {
 }
 
 button {
+   font-family: "Open Sans", sans-serif;
+   background-color: rgba(211, 211, 211, 0.7);
    border: none;
    border-radius: 10%;
    padding: 1% 2% 1% 2%;
-   height: 2.5em;
-   font-size: 1em;
+   width: max-content;
+   font-size: 1.2vw;
    cursor: pointer;
+   transition: background-color 0.2;
 }
 
-/* button:hover {
-
-} */
+button:hover {
+   background-color: rgba(211, 211, 211, 1);
+}
 
 #sortingOptions {
    padding: 0.5%;
