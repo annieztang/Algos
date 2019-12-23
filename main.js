@@ -3,6 +3,7 @@
    let arr = [2, 4, 8, 3, 1, 7, 9];
    let currentSort = "selection";
    const interval = 500;
+   const maxArraySize = 25;
    window.addEventListener("load", init);             // after window loads, run init
 
    /**
@@ -14,6 +15,9 @@
       setBarHeights(arr);
       id("start-sort").addEventListener("click", chooseSort);
       id("reset").addEventListener("click", resetSort);
+      id("slider").oninput = function() {
+         id("slider-value").innerText = this.value;
+      }
    }
 
    // sets heights of bars
@@ -53,20 +57,21 @@
          colorBars("red", i, k); // first element in sub-array green.
 
          for (let j = i + 1; j < arr.length; j++) {
-            colorBars("orchid", j, k)
-            k += 0.5; // shows iterator for 0.5, then turn red
+            colorBars("orchid", j, k);
+             // shows iterator for 0.5, then turn red
 
             if (arr[j] < arr[min_index]) { // if min val found, turn BOTH first and min bar RED
+               k++;
                colorBars("purple", min_index, k); // turn old min_index back to purple
                colorBars("red", j, k);
-               // colorBars("red", i, k);
+               colorBars("red", i, k);
                min_index = j;
             }
 
-            if (min_index == j) {              // NEW CHANGES by Annie 11:38AM 12/22/19 lol
+            if (min_index == j) {
                colorBars("red", min_index, k);
             }
-            k += 0.5;
+            k++;
             if (min_index != j) { // if iterator is not min val, turn bar back to purple
                colorBars("purple", j, k);
             }
@@ -141,6 +146,10 @@
       let min = bars[a_index].style.height;
       bars[a_index].style.height = bars[b_index].style.height;
       bars[b_index].style.height = min;
+   }
+
+   function makeRandArray() {
+      
    }
 
 

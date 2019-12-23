@@ -37,6 +37,18 @@ footer {
    background-color: red;
 }
 
+#slider-container {
+   width: 50%;
+   margin-right: auto;
+   margin-left: auto;
+   display: flex;
+   justify-content: space-around;
+}
+
+#slider {
+   width: 80%;
+}
+
 #button-container {
    margin-top: 2%;
    margin-left: auto;
