@@ -14,9 +14,10 @@
       makeNewBars();
       id("start-sort").addEventListener("click", chooseSort);
       id("reset").addEventListener("click", resetSort);
-      id("new-bars").addEventListener("click", makeNewBars);
+      // id("new-bars").addEventListener("click", makeNewBars);
       id("slider").oninput = function() {
          id("slider-value").innerText = this.value;
+         makeNewBars();
       }
    }
 
