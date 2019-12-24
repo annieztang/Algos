@@ -1,11 +1,12 @@
 (function() {
    "use strict";                                      // prevents use of undeclared variables
    let arr = [];
+   let arr3 = [];
    let arr2 = [];
    let currentSort;
-   const interval = 10;
-   const maxArraySize = 25;
-   const maxArrayValue = 20;
+   let interval = 375;
+   const maxArraySize = 45;
+   const maxArrayValue = 45;
    window.addEventListener("load", init);             // after window loads, run init
 
    function init() {
@@ -17,6 +18,7 @@
       // id("new-bars").addEventListener("click", makeNewBars);
       id("slider").oninput = function() {
          id("slider-value").innerText = this.value;
+         // interval =
          makeNewBars();
       }
    }
@@ -150,16 +152,21 @@
 
    // randomize bars and array values
    function makeNewBars() {
-      arr = [];                                // clears current array values
-      id("sortingAnimation").innerHTML = "";   // clears current bars
+      arr = [];                                                                  // clears current array values
+      arr3 = [];
+      id("sortingAnimation").innerHTML = "";                                     // clears current bars
       let sliderVal = id("slider").value;
-      for (let i = 0; i < sliderVal; i++) {             // loop up to value on slider
-         arr[i] = Math.floor(Math.random() * maxArrayValue + 1); // randomize array value
+      for (let i = 0; i < sliderVal; i++) {                                      // loop up to value on slider
+         arr[i] = Math.floor(Math.random() * maxArrayValue + 1);                 // randomize array value
+         arr3 = arr.slice(0,i);
+         while (arr3.includes(arr[i])) {
+            arr[i] = Math.floor(Math.random() * maxArrayValue + 1);
+         }
          let bar = gen("div");
          bar.classList.add("bar");
-         bar.style.height = arr[i] * 10 + "px";                  // make new bar with height according to array value
+         bar.style.height = arr[i] * 10 + "px";                                  // make new bar with height according to array value
          bar.style.width = 60 / sliderVal + "%";
-         id("sortingAnimation").appendChild(bar);                // append to animation container
+         id("sortingAnimation").appendChild(bar);                                // append to animation container
       }
       arr2 = arr.slice();
    }
