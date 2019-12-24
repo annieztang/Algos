@@ -4,21 +4,21 @@
    let arr3 = [];
    let arr2 = [];
    let currentSort;
-   let interval = 375;
+   let interval = 1000 / 25;
    const maxArraySize = 45;
    const maxArrayValue = 45;
    window.addEventListener("load", init);             // after window loads, run init
 
    function init() {
-      // let sortAlgo = new Sort(arr);
-      // sortAlgo = id("sortingAlgos").addEventListener("click").
       makeNewBars();
       id("start-sort").addEventListener("click", chooseSort);
+      console.log("After init: " + interval);
       id("reset").addEventListener("click", resetSort);
-      // id("new-bars").addEventListener("click", makeNewBars);
       id("slider").oninput = function() {
+         console.log("Before sliding: " + interval);
          id("slider-value").innerText = this.value;
-         // interval =
+         interval = 1000 / id("slider").value;
+         console.log("After sliding: " + interval);
          makeNewBars();
       }
    }
