@@ -1,4 +1,4 @@
-function animateSelectionSort(arr) {
+function animateSelectionSort(arr, interval) {
       let bars = qsa(".bar");
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
@@ -42,4 +42,19 @@ function animateSelectionSort(arr) {
          }
       }
       colorBars("green", arr.length - 1, k);
+}
+
+function colorBars(color, index, k, interval) {
+   let bars = qsa(".bar");
+   setTimeout(function() {
+      bars[index].style.backgroundColor = color;
+   }, k * interval);
+}
+
+// visually swaps bars
+function swapBars(a_index, b_index) {
+   let bars = qsa(".bar");
+   let min = bars[a_index].style.height;
+   bars[a_index].style.height = bars[b_index].style.height;
+   bars[b_index].style.height = min;
 }
