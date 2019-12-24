@@ -1,4 +1,4 @@
-function animateSelectionSort() {
+function animateSelectionSort(arr) {
       let bars = qsa(".bar");
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
