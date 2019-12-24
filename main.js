@@ -2,7 +2,7 @@
    "use strict";                                      // prevents use of undeclared variables
    let arr = [];
    let arr2 = [];
-   let currentSort = "selection";
+   let currentSort;
    const interval = 10;
    const maxArraySize = 25;
    const maxArrayValue = 20;
@@ -47,14 +47,11 @@
       for (let i = 0; i < bars.length; i++) {
          bars[i].style.backgroundColor = "purple";
       }
-      console.log(arr);
-      console.log(arr2);
    }
 
    // animates sorting algorithm
    function animateSelectionSort(arr) {
       let bars = qsa(".bar");
-      console.log("animation running");
       let k = 1;
       for (let i = 0; i < arr.length - 1; i++) {
          let min_index = i;
@@ -97,8 +94,6 @@
          }
       }
       colorBars("green", arr.length - 1, k);
-      console.log(arr);
-      console.log(arr2);
    }
 
    // function colorBar(bar_index, color) {
@@ -137,7 +132,6 @@
          }
       }
    }
-   
 
    function colorBars(color, index, k) {
       let bars = qsa(".bar");
@@ -149,7 +143,6 @@
    // visually swaps bars
    function swapBars(a_index, b_index) {
       let bars = qsa(".bar");
-      console.log("swapped");
       let min = bars[a_index].style.height;
       bars[a_index].style.height = bars[b_index].style.height;
       bars[b_index].style.height = min;
@@ -169,52 +162,50 @@
          id("sortingAnimation").appendChild(bar);                // append to animation container
       }
       arr2 = arr.slice();
-      console.log(arr);
-      console.log(arr2);
    }
 
 
-   /* ------------------------------ Helper Functions  ------------------------------ */
-
-   /**
-    * Returns the element that has the ID attribute with the specified value.
-    * @param {string} idName - element ID
-    * @returns {object} DOM object associated with id.
-    */
-   function id(idName) {
-     return document.getElementById(idName);
-   }
-
-   // creates object of the first id, class, or element
-   //    returns: object of first id, class, or element
-   function qs(selector) {
-      return document.querySelector(selector);
-   }
-
-   // creates array of objects by like id, class, or elements
-   //    returns: array of like id, class, or elements
-   function qsa(selector) {
-      return document.querySelectorAll(selector);
-   }
-
-
-   function gen(elType) {
-      return document.createElement(elType);
-   }
-
-   /**
-    * Helper function to return the response's result text if successful, otherwise
-    * returns the rejected Promise result with an error status and corresponding text
-    * @param {object} response - response to check for success/error
-    * @returns {object} - valid result text if response was successful, otherwise rejected
-    *                     Promise result
-    */
-   function checkStatus(response) {
-      if (response.status >= 200 && response.status < 300) {
-        return response.text();
-      } else {
-        return Promise.reject(new Error(response.status + ": " + response.statusText));
-      }
-   }
+   // /* ------------------------------ Helper Functions  ------------------------------ */
+   //
+   // /**
+   //  * Returns the element that has the ID attribute with the specified value.
+   //  * @param {string} idName - element ID
+   //  * @returns {object} DOM object associated with id.
+   //  */
+   // function id(idName) {
+   //   return document.getElementById(idName);
+   // }
+   //
+   // // creates object of the first id, class, or element
+   // //    returns: object of first id, class, or element
+   // function qs(selector) {
+   //    return document.querySelector(selector);
+   // }
+   //
+   // // creates array of objects by like id, class, or elements
+   // //    returns: array of like id, class, or elements
+   // function qsa(selector) {
+   //    return document.querySelectorAll(selector);
+   // }
+   //
+   //
+   // function gen(elType) {
+   //    return document.createElement(elType);
+   // }
+   //
+   // /**
+   //  * Helper function to return the response's result text if successful, otherwise
+   //  * returns the rejected Promise result with an error status and corresponding text
+   //  * @param {object} response - response to check for success/error
+   //  * @returns {object} - valid result text if response was successful, otherwise rejected
+   //  *                     Promise result
+   //  */
+   // function checkStatus(response) {
+   //    if (response.status >= 200 && response.status < 300) {
+   //      return response.text();
+   //    } else {
+   //      return Promise.reject(new Error(response.status + ": " + response.statusText));
+   //    }
+   // }
 
 })();
