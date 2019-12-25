@@ -74,6 +74,8 @@ footer {
   background: purple;
   cursor: pointer;
 }
+
+
 /* use -moz- instead of -webkit- if we want compatible with firefox */
 
 #slider-value {

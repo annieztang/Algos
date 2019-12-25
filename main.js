@@ -17,7 +17,13 @@
       id("slider").oninput = function() {
          console.log("Before sliding: " + interval);
          id("slider-value").innerText = this.value;
-         interval = 1000 / id("slider").value;
+         if (id("slider").value <= 10) {
+            interval = 750;
+         } else if (id("slider").value < 25) {
+            interval = 100;
+         } else {
+            interval = 5;
+         }
          console.log("After sliding: " + interval);
          makeNewBars();
       }
