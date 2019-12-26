@@ -29,21 +29,15 @@
       }
    }
 
-   // sets heights of bars
-   function setBarHeights(arr) {
-   let bars = qsa(".bar");
-      for (let i = 0; i < bars.length; i++) {
-         bars[i].style.height = arr[i] * 10 + "px";
-      }
-   }
-
    // Selects the animation for the bars
    function chooseSort() {
       currentSort = id("sortingOptions").value;
       if (currentSort == "selection") {
          animateSelectionSort(arr);
-      } else {
+      } else if (currentSort == "bubble") {
          animateBubbleSort(arr);
+      } else {
+         animateMergeSort(arr, 1, 0);
       }
    }
 
@@ -141,6 +135,144 @@
       }
    }
 
+   function animateMergeSort(arr, k, start) {
+      let n = arr.length;              // length of input array
+      let left = [];                   // left sub-array
+      let right = [];                  // right sub-array
+
+      // create space for left and right sub-arrays
+      if (n == 1) {     // if array is size 1, return it (size 1 is sorted)
+         return arr;
+      }
+
+      // fill in left and right sub-arrays (unsorted)
+      for (let i = 0; i < n; i++) {
+         if (i < Math.floor(n / 2)) {                 // fill left sub-array til mid-point of input array
+            left[i] = arr[i];
+         } else {                                     // fill right sub-array til end of input array
+            right[i - Math.floor(n / 2)] = arr[i];
+         }
+      }
+
+      // recursively split and sort arrays
+      left = animateMergeSort(left, k, start);
+      k += left[left.length - 1];
+      if(left.length > 1) {
+         left = left.slice(0, left.length - 1);
+      }
+
+      right = animateMergeSort(right, k, start + left.length);
+      k += right[right.length - 1];
+      if(right.length > 1) {
+         right = right.slice(0, right.length - 1);
+      }
+
+
+      // Animation specific interval update. Not applicable for normal merge sort.
+      // helper funcion used to animate bar swaps.
+      //    returns: number of intervals that have passed.
+      k = helperMerge(left, right, k, start);
+
+      // return a merge of left and right subarrays (k is added as a last element to the merge. Need k for animation)
+      return merge(left, right, k);
+   }
+
+   // function for merging sorted arrays
+      function merge(left, right, k) {
+
+         // create space for result array
+         let result = [];
+
+         // index cursors
+         let i = 0;        // left array cursor
+         let j = 0;        // right array cursor
+         let index = 0;    // result array cursor
+
+         // fill result array with sub-arrays until one sub-array is depleted
+         while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+               result[index] = left[i];
+               i++;
+            } else {
+               result[index] = right[j];
+               j++;
+            }
+            index++;
+         }
+
+         // fill result array with rest of left sub-array if elements still unadded
+         while (i < left.length) {
+            result[index] = left[i];
+            i++;
+            index++;
+         }
+
+         // fil result array with rest of right sub-array if elemnts still unadded
+         while (j < right.length) {
+            result[index] = right[j];
+            j++;
+            index++;
+         }
+         result.push(k);   // add k to end of array
+         return result;
+      }
+
+      // animates merge sort
+      // copy and pasted most of merge...
+      //    returns: number of intervals, k, in animation
+      function helperMerge(left, right, k, start) {
+         // create space for result array
+         let result = [];
+
+         // index cursors
+         let i = 0;        // left array cursor
+         let j = 0;        // right array cursor
+         let index = 0;    // result array cursor
+
+         // fill result array with sub-arrays until one sub-array is depleted
+         while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+               result[index] = left[i];
+               i++;
+            } else {
+               result[index] = right[j];
+               j++;
+            }
+            index++;
+         }
+
+         // fill result array with rest of left sub-array if elements still unadded
+         while (i < left.length) {
+            result[index] = left[i];
+            i++;
+            index++;
+         }
+
+         // fil result array with rest of right sub-array if elemnts still unadded
+         while (j < right.length) {
+            result[index] = right[j];
+            j++;
+            index++;
+         }
+
+         let arr_index = start;
+
+         for (let a = 0; a < result.length; a++) {
+            printBars(result, a, arr_index);
+            colorBars("green", arr_index, k);
+            k++;
+            arr_index++;
+         }
+
+         arr_index = start;
+
+         for (let a = 0; a < result.length; a++) {
+            colorBars("purple", arr_index, k);
+            arr_index++;
+         }
+         return k;
+      }
+
    function colorBars(color, index, k) {
       let bars = qsa(".bar");
       setTimeout(function() {
@@ -154,6 +286,19 @@
       let min = bars[a_index].style.height;
       bars[a_index].style.height = bars[b_index].style.height;
       bars[b_index].style.height = min;
+   }
+
+   function printBars(result, result_index, arr_index) {
+      let bars = qsa(".bar");
+      bars[arr_index].style.height = result[result_index] * 10 + "px";
+   }
+
+   // sets heights of bars
+   function setBarHeights(arr) {
+   let bars = qsa(".bar");
+      for (let i = 0; i < bars.length; i++) {
+         bars[i].style.height = arr[i] * 10 + "px";
+      }
    }
 
    // randomize bars and array values
