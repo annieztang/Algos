@@ -22,7 +22,8 @@
          } else if (id("slider").value < 25) {
             interval = 100;
          } else {
-            if (currentSort == "merge"){
+            currentSort = id("sortingOptions").value;
+            if (currentSort === "merge"){
                interval = 50;
             } else {
                interval = 5;
