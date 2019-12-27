@@ -22,7 +22,11 @@
          } else if (id("slider").value < 25) {
             interval = 100;
          } else {
-            interval = 5;
+            if (currentSort == "merge"){
+               interval = 50;
+            } else {
+               interval = 5;
+            }
          }
          console.log("After sliding: " + interval);
          makeNewBars();
@@ -256,6 +260,14 @@
          }
 
          let arr_index = start;
+
+         for (let a = 0; a < result.length; a++) {
+            colorBars("orchid", arr_index, k);
+            arr_index++;
+            k++;
+         }
+
+         arr_index = start;
 
          for (let a = 0; a < result.length; a++) {
             setTimeout(printBars, k * interval, result, a, arr_index);
