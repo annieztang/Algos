@@ -156,14 +156,14 @@
 
       // recursively split and sort arrays
       left = animateMergeSort(left, k, start);
-      k += left[left.length - 1];
       if(left.length > 1) {
+         k = left[left.length - 1];
          left = left.slice(0, left.length - 1);
       }
 
       right = animateMergeSort(right, k, start + left.length);
-      k += right[right.length - 1];
       if(right.length > 1) {
+         k = right[right.length - 1];
          right = right.slice(0, right.length - 1);
       }
 
@@ -258,7 +258,7 @@
          let arr_index = start;
 
          for (let a = 0; a < result.length; a++) {
-            printBars(result, a, arr_index);
+            setTimeout(printBars, k * interval, result, a, arr_index);
             colorBars("green", arr_index, k);
             k++;
             arr_index++;
