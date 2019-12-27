@@ -4,7 +4,7 @@
    let arr3 = [];
    let arr2 = [];
    let currentSort;
-   let interval = 1000 / 25;
+   let interval = 15;
    const maxArraySize = 45;
    const maxArrayValue = 45;
    window.addEventListener("load", init);             // after window loads, run init
