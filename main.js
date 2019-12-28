@@ -15,19 +15,31 @@
       id("reset").addEventListener("click", resetSort);
       id("slider").oninput = function() {
          id("slider-value").innerText = this.value;
-         if (id("slider").value <= 10) {
-            interval = 750;
-         } else if (id("slider").value < 25) {
-            interval = 100;
-         } else {
-            currentSort = id("sortingOptions").value;
-            if (currentSort === "merge"){
-               interval = 50;
-            } else {
-               interval = 5;
-            }
-         }
+         // if (id("slider").value <= 10) {
+         //    interval = 750;
+         // } else if (id("slider").value < 25) {
+         //    interval = 100;
+         // } else {
+         //    currentSort = id("sortingOptions").value;
+         //    if (currentSort === "merge"){
+         //       interval = 50;
+         //    } else {
+         //       interval = 5;
+         //    }
+         // }
          makeNewBars();
+      }
+      id("speed-slider").oninput = function() {
+         if (this.value == 1) {
+            id("speed").innerText = "Slow";
+            interval = 500;
+         } else if (this.value == 2) {
+            id("speed").innerText = "Medium";
+            interval = 250;
+         } else {
+            id("speed").innerText = "Fast";
+            interval = 15;
+         }
       }
    }
 
@@ -300,14 +312,14 @@
 
    function printBars(result, result_index, arr_index) {
       let bars = qsa(".bar");
-      bars[arr_index].style.height = result[result_index] * 10 + "px";
+      bars[arr_index].style.height = result[result_index] * 2.5 + "%";
    }
 
    // sets heights of bars
    function setBarHeights(arr) {
    let bars = qsa(".bar");
       for (let i = 0; i < bars.length; i++) {
-         bars[i].style.height = arr[i] * 10 + "px";
+         bars[i].style.height = arr[i] * 2.5 + "%";
       }
    }
 
@@ -325,7 +337,7 @@
          }
          let bar = gen("div");
          bar.classList.add("bar");
-         bar.style.height = arr[i] * 10 + "px";                                  // make new bar with height according to array value
+         bar.style.height = arr[i] * 2.5 + "%";                                  // make new bar with height according to array value
          bar.style.width = 60 / sliderVal + "%";
          id("sortingAnimation").appendChild(bar);                                // append to animation container
       }
