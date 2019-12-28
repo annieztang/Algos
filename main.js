@@ -12,10 +12,8 @@
    function init() {
       makeNewBars();
       id("start-sort").addEventListener("click", chooseSort);
-      console.log("After init: " + interval);
       id("reset").addEventListener("click", resetSort);
       id("slider").oninput = function() {
-         console.log("Before sliding: " + interval);
          id("slider-value").innerText = this.value;
          if (id("slider").value <= 10) {
             interval = 750;
@@ -29,7 +27,6 @@
                interval = 5;
             }
          }
-         console.log("After sliding: " + interval);
          makeNewBars();
       }
    }
@@ -161,13 +158,13 @@
 
       // recursively split and sort arrays
       left = animateMergeSort(left, k, start);
-      if(left.length > 1) {
+      if (left.length > 1) {
          k = left[left.length - 1];
          left = left.slice(0, left.length - 1);
       }
 
       right = animateMergeSort(right, k, start + left.length);
-      if(right.length > 1) {
+      if (right.length > 1) {
          k = right[right.length - 1];
          right = right.slice(0, right.length - 1);
       }
