@@ -4,7 +4,7 @@
    let arr3 = [];
    let arr2 = [];
    let currentSort;
-   let interval = 15;
+   let interval = 30;
    const maxArraySize = 45;
    const maxArrayValue = 45;
    window.addEventListener("load", init);             // after window loads, run init
@@ -38,7 +38,7 @@
             interval = 250;
          } else {
             id("speed").innerText = "Fast";
-            interval = 15;
+            interval = 30;
          }
       }
    }
