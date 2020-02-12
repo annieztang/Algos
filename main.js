@@ -14,42 +14,46 @@
       id("start-sort").addEventListener("click", chooseSort);
       id("reset").addEventListener("click", resetSort);
       id("slider").oninput = function() {
-         id("slider-value").innerText = this.value;
-         // if (id("slider").value <= 10) {
-         //    interval = 750;
-         // } else if (id("slider").value < 25) {
-         //    interval = 100;
-         // } else {
-         //    currentSort = id("sortingOptions").value;
-         //    if (currentSort === "merge"){
-         //       interval = 50;
-         //    } else {
-         //       interval = 5;
-         //    }
-         // }
-         makeNewBars();
-      }
-      id("speed-slider").oninput = function() {
-         if (this.value == 1) {
-            id("speed").innerText = "Slow";
+          id("slider-value").innerText = this.value;
+         if (id("slider").value <= 10) {
             interval = 500;
-         } else if (this.value == 2) {
-            id("speed").innerText = "Medium";
-            interval = 250;
+         } else if (id("slider").value < 25) {
+            interval = 65;
          } else {
-            id("speed").innerText = "Fast";
-            interval = 30;
+            currentSort = id("sortingOptions").value;
+            if (currentSort === "merge"){
+               interval = 50;
+            } else {
+               interval = 15;
+            }
          }
+         makeNewBars();
       }
    }
 
    // Selects the animation for the bars
    function chooseSort() {
+      id("slider").disabled = true;
+      id("start-sort").disabled = true;
+      id("reset").disabled = true;
+      let k = 0;
       currentSort = id("sortingOptions").value;
       if (currentSort == "selection") {
-         animateSelectionSort(arr);
+         k = animateSelectionSort(arr);
+         setTimeout(function() {
+             id("slider").disabled = false;
+             id("start-sort").disabled = false;
+             id("reset").disabled = false;
+         }, k * interval);
+
       } else if (currentSort == "bubble") {
-         animateBubbleSort(arr);
+         k = animateBubbleSort(arr);
+         setTimeout(function() {
+             id("slider").disabled = false;
+             id("start-sort").disabled = false;
+             id("reset").disabled = false;
+         }, k * interval);
+
       } else {
          animateMergeSort(arr, 1, 0);
       }
@@ -110,6 +114,7 @@
          }
       }
       colorBars("green", arr.length - 1, k);
+      return k;
    }
 
    // function colorBar(bar_index, color) {
@@ -147,6 +152,7 @@
             colorBars("green", i, k);
          }
       }
+      return k;
    }
 
    function animateMergeSort(arr, k, start) {
@@ -281,6 +287,15 @@
 
          for (let a = 0; a < result.length; a++) {
             setTimeout(printBars, k * interval, result, a, arr_index);
+            if (k * interval > (id("slider").value * 10)* interval) {
+                console.log(k);
+                console.log(id("slider").value * Math.log(id("slider").value));
+                setTimeout(function() {
+                    id("slider").disabled = false;
+                    id("start-sort").disabled = false;
+                    id("reset").disabled = false;
+                }, k * interval);
+            }
             colorBars("green", arr_index, k);
             k++;
             arr_index++;

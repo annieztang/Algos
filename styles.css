@@ -57,12 +57,6 @@ footer {
    -webkit-appearance: none;
    height: 1vh;
    background: #d3d3d3;
-   opacity: 0.7;
-   transition: opacity .2s;
-}
-
-#slider:hover {
-   opacity: 1;
 }
 
 #slider::-webkit-slider-thumb {
@@ -75,6 +69,10 @@ footer {
   cursor: pointer;
 }
 
+ #slider:disabled {
+     opacity: 0.7;
+     cursor: context-menu !important;
+ }
 
 /* use -moz- instead of -webkit- if we want compatible with firefox */
 
@@ -105,6 +103,11 @@ button {
 
 button:hover {
    background-color: rgba(211, 211, 211, 1);
+}
+
+button:hover:disabled {
+    background-color: rgba(211, 211, 211, 0.7);
+    cursor: context-menu;
 }
 
 #sortingOptions {
